@@ -18,12 +18,13 @@ layout: null
             <img src="{{ '/assets/img/kymld-brand.png' | relative_url }}"
                  alt="KYMLD">
         </a>
+
         <nav class="navigation">
             <a href="{{ '/' | relative_url }}">HOME</a>
             <a href="{{ '/categories/' | relative_url }}">CATEGORIES</a>
             <a href="{{ '/archives/' | relative_url }}">ARCHIVE</a>
             <a href="{{ '/tags/' | relative_url }}">TAGS</a>
-            <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+            <a href="{{ '/about/' | relative_url }}">INFO</a>
         </nav>
     </header>
 
@@ -39,45 +40,96 @@ layout: null
             </p>
         </section>
 
-        <section class="content-grid">
+        <section class="kymld-home-bottom">
 
-            <div class="cloud-panel">
-                <img src="{{ '/assets/img/clouds.png' | relative_url }}"
-                     alt="Clouds">
+            <!-- Recent Posts -->
+            <div class="kymld-recent">
+
+                <div class="kymld-section-label">
+                    LATEST
+                </div>
+
+                <h2>Recent Posts</h2>
+
+                <div class="kymld-post-list">
+
+                    {% for post in site.posts limit:5 %}
+
+                    <a class="kymld-post-row"
+                       href="{{ post.url | relative_url }}">
+
+                        <span class="kymld-post-title">
+                            ▸ {{ post.title | escape }}
+                        </span>
+
+                        <time>
+                            {{ post.date | date: "%Y.%m.%d" }}
+                        </time>
+
+                    </a>
+
+                    {% endfor %}
+
+                </div>
+
             </div>
 
-            <div class="recent-posts">
+            <!-- About Me -->
+            <div class="kymld-about">
 
-                <div class="section-label">LATEST</div>
-                <h1>Recent Posts</h1>
+                <div class="kymld-section-label">
+                    ABOUT ME
+                </div>
 
-                {% for post in site.posts limit:5 %}
-                <a class="post-row" href="{{ post.url | relative_url }}">
-                    <span class="post-title">
-                        <span class="arrow">▸</span>
-                        {{ post.title | escape }}
-                    </span>
+                <div class="kymld-id-card">
 
-                    <time>
-                        {{ post.date | date: "%Y.%m.%d" }}
-                    </time>
-                </a>
-                {% endfor %}
+                    <!-- Profile Image -->
+                    <div class="kymld-id-photo">
+                        <img src="{{ '/assets/img/kymld-computer.png' | relative_url }}"
+                             alt="Retro Computer">
+                    </div>
 
-            </div>
+                    <!-- Identification -->
+                    <div class="kymld-id-info">
 
-            <div class="planet-panel">
+                        <div class="kymld-id-label">
+                            IDENTIFICATION
+                        </div>
 
-                <img src="{{ '/assets/img/planet.png' | relative_url }}"
-                     alt="Planet">
+                        <div class="kymld-id-name">
+                            KYMLD
+                        </div>
 
-                <p>
-                    NOTES ON<br>
-                    SECURITY, DEVELOPMENT,<br>
-                    AND EVERYTHING IN BETWEEN.
-                </p>
+                        <div class="kymld-id-details">
 
-                <div class="small-line"></div>
+                            <p>전공 / 사이버보안</p>
+
+                            <p>
+                                메일 /
+                                <a href="mailto:yuminkim@ewha.ac.kr">
+                                    yuminkim@ewha.ac.kr
+                                </a>
+                            </p>
+
+                            <p>
+                                깃허브 /
+                                <a href="https://github.com/yuminkim0612"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    yuminkim0612 ↗
+                                </a>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Vertical Barcode -->
+                    <div class="kymld-barcode"
+                         aria-hidden="true">
+                    </div>
+
+                </div>
 
             </div>
 
@@ -87,8 +139,12 @@ layout: null
 
     <footer class="site-footer">
         <span>© {{ site.time | date: "%Y" }} KYMLD</span>
+
         <a href="https://github.com/yuminkim0612"
-           target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+           target="_blank"
+           rel="noopener noreferrer">
+            GITHUB ↗
+        </a>
     </footer>
 
 </body>
