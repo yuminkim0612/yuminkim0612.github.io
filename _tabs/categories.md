@@ -4,7 +4,6 @@ title: Categories
 order: 1
 permalink: /categories/
 ---
-<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
