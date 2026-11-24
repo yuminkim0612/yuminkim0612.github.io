@@ -36,19 +36,38 @@ permalink: /categories/
     </section>
 
     {% assign names = "Development|CTF / Wargame|Bug Bounty|Technical Writing|Research / Conference|Contest / Certification" | split: "|" %}
-    {% assign labels = "개발|CTF/워게임|Bug Bounty|블로그/기술문서|논문/컨퍼런스|공모전/자격증" | split: "|" %}
+    {% assign labels = "개발|CTF/워게임|버그바운티|블로그/기술문서|논문/컨퍼런스|공모전/자격증" | split: "|" %}
+    {% assign keys = "개발|CTF/Wargame|Bug Bounty|블로그/기술문서|논문/컨퍼런스|공모전/자격증" | split: "|" %}
 
     <div class="memory-grid">
+
         {% for name in names %}
         {% assign category = labels[forloop.index0] %}
+
         <a class="memory-card" href="#memory-{{ forloop.index }}">
+
             <img src="{{ '/assets/img/kymld-memory.png' | relative_url }}" alt="">
-            <span class="memory-number">0{{ forloop.index }}</span>
-            <span class="memory-name">{{ name }}</span>
-            <span class="memory-label">{{ category }}</span>
-            <span class="memory-serial">KYM-00{{ forloop.index }}</span>
+
+            <span class="memory-number">
+                0{{ forloop.index }}
+            </span>
+
+            <span class="memory-name">
+                {{ name }}
+            </span>
+
+            <span class="memory-label">
+                {{ category }}
+            </span>
+
+            <span class="memory-serial">
+                KYM-00{{ forloop.index }}
+            </span>
+
         </a>
+
         {% endfor %}
+
     </div>
 
     <p class="memory-status">
@@ -56,21 +75,40 @@ permalink: /categories/
     </p>
 
     {% for category in labels %}
+
     <section class="memory-results" id="memory-{{ forloop.index }}">
+
         <h2>{{ category }}</h2>
 
-        {% assign posts = site.categories[category] %}
+        {% assign category_key = keys[forloop.index0] %}
+        {% assign posts = site.categories[category_key] %}
+
         {% for post in posts %}
+
         <a class="memory-post" href="{{ post.url | relative_url }}">
-            <span>{{ post.title }}</span>
-            <time>{{ post.date | date: "%Y.%m.%d" }}</time>
+
+            <span>
+                {{ post.title | replace: "CTF/Wargame", "CTF/워게임" | replace: "Bug Bounty", "버그바운티" | escape }}
+            </span>
+
+            <time>
+                {{ post.date | date: "%Y.%m.%d" }}
+            </time>
+
         </a>
+
         {% else %}
+
         <p>아직 등록된 게시글이 없습니다.</p>
+
         {% endfor %}
 
-        <a class="memory-back" href="#top">BACK TO INDEX ↑</a>
+        <a class="memory-back" href="#top">
+            BACK TO INDEX ↑
+        </a>
+
     </section>
+
     {% endfor %}
 
 </main>
