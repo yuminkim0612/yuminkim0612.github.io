@@ -36,7 +36,7 @@ permalink: /categories/
     </section>
 
     {% assign names = "Development|CTF / Wargame|Bug Bounty|Technical Writing|Research / Conference|Contest / Certification" | split: "|" %}
-    {% assign labels = "개발|CTF/Wargame|Bug Bounty|블로그/기술문서|논문/컨퍼런스|공모전/자격증" | split: "|" %}
+    {% assign labels = "개발|CTF/워게임|Bug Bounty|블로그/기술문서|논문/컨퍼런스|공모전/자격증" | split: "|" %}
 
     <div class="memory-grid">
         {% for name in names %}
