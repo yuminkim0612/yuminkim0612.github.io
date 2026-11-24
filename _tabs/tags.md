@@ -24,7 +24,6 @@ permalink: /tags/
         <a href="{{ '/categories/' | relative_url }}">CATEGORIES</a>
         <a href="{{ '/archives/' | relative_url }}">ARCHIVE</a>
         <a class="active" href="{{ '/tags/' | relative_url }}">TAGS</a>
-        <a href="{{ '/about/' | relative_url }}">ABOUT</a>
     </nav>
 </header>
 
