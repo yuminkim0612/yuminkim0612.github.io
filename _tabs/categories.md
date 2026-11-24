@@ -1,7 +1,6 @@
 ---
-layout: null
+layout: none
 title: Categories
-icon: fas fa-stream
 order: 1
 permalink: /categories/
 ---
@@ -11,11 +10,10 @@ permalink: /categories/
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories | KYMLD</title>
-    <link rel="stylesheet" href="{{ '/assets/css/kymld.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/kymld-categories.css' | relative_url }}">
 </head>
 
-<body class="memory-page">
+<body id="top" class="memory-page">
 
 <header class="memory-header">
     <a href="{{ '/' | relative_url }}">
@@ -43,34 +41,16 @@ permalink: /categories/
     {% assign labels = "개발|CTF/Wargame|Bug Bounty|블로그/기술문서|논문/컨퍼런스|공모전/자격증" | split: "|" %}
 
     <div class="memory-grid">
-
         {% for name in names %}
         {% assign category = labels[forloop.index0] %}
-
         <a class="memory-card" href="#memory-{{ forloop.index }}">
-
             <img src="{{ '/assets/img/kymld-memory.png' | relative_url }}" alt="">
-
-            <div class="memory-number">
-                0{{ forloop.index }}
-            </div>
-
-            <div class="memory-name">
-                {{ name }}
-            </div>
-
-            <div class="memory-label">
-                {{ category }}
-            </div>
-
-            <div class="memory-serial">
-                KYM-00{{ forloop.index }}
-            </div>
-
+            <span class="memory-number">0{{ forloop.index }}</span>
+            <span class="memory-name">{{ name }}</span>
+            <span class="memory-label">{{ category }}</span>
+            <span class="memory-serial">KYM-00{{ forloop.index }}</span>
         </a>
-
         {% endfor %}
-
     </div>
 
     <p class="memory-status">
@@ -82,7 +62,6 @@ permalink: /categories/
         <h2>{{ category }}</h2>
 
         {% assign posts = site.categories[category] %}
-
         {% for post in posts %}
         <a class="memory-post" href="{{ post.url | relative_url }}">
             <span>{{ post.title }}</span>
