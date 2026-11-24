@@ -1,0 +1,620 @@
+/* KYMLD — Observation Record */
+
+:root {
+    --background: #b8cdd1;
+    --panel: #c8d9dc;
+    --ink: #142024;
+    --muted: #52666a;
+    --line: rgba(20, 32, 36, 0.35);
+    --terminal: #17262b;
+    --terminal-header: #293c41;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.post-page {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    color: var(--ink);
+    font-family: "Courier New", monospace;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: var(--ink);
+    color: var(--background);
+}
+
+/* Background Texture */
+
+.post-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Header */
+
+.post-header {
+    width: 100%;
+    padding: 24px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+}
+
+.post-brand img {
+    display: block;
+    width: 145px;
+    height: auto;
+}
+
+.post-header nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.post-header nav a {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+
+.post-header nav a:hover {
+    opacity: 0.5;
+}
+
+/* Main */
+
+.post-main {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    padding: 40px 0 80px;
+    flex: 1;
+}
+
+.post-back {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+
+.post-back:hover {
+    opacity: 0.5;
+}
+
+/* Observation Record */
+
+.post-heading {
+    margin-top: 42px;
+    margin-bottom: 44px;
+}
+
+.post-eyebrow {
+    margin: 0 0 16px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.post-title-frame {
+    padding: 26px 32px 20px;
+    min-height: 220px;
+    background: var(--panel);
+    border: 1px solid var(--muted);
+    display: flex;
+    flex-direction: column;
+}
+
+.post-file-number {
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.post-title {
+    margin: 25px 0 36px;
+    font-family: Georgia, "Noto Serif KR", serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px 48px;
+    margin-top: auto;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+}
+
+.post-meta-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+/* Article Layout */
+
+.post-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+    gap: 36px;
+    align-items: start;
+}
+
+/* Article Content */
+
+.post-content {
+    min-width: 0;
+    font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.95;
+    overflow-wrap: anywhere;
+}
+
+.post-content p {
+    margin: 0 0 20px;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    color: var(--ink);
+    line-height: 1.5;
+    scroll-margin-top: 30px;
+}
+
+.post-content h1,
+.post-content h2 {
+    margin: 48px 0 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    font-family: "Courier New", "Malgun Gothic", monospace;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.post-content h3 {
+    margin: 32px 0 16px;
+    font-size: 20px;
+}
+
+.post-content h4 {
+    margin: 25px 0 12px;
+    font-size: 17px;
+}
+
+.post-content > :first-child {
+    margin-top: 0;
+}
+
+.post-content ul,
+.post-content ol {
+    padding-left: 25px;
+    margin-bottom: 24px;
+}
+
+.post-content li {
+    margin-bottom: 6px;
+}
+
+.post-content a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.post-content a:hover {
+    color: var(--muted);
+}
+
+.post-content hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 36px 0;
+}
+
+/* Images */
+
+.post-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 25px auto;
+    border: 1px solid var(--line);
+}
+
+.post-content figure {
+    margin: 25px 0;
+}
+
+.post-content figcaption {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Blockquotes */
+
+.post-content blockquote {
+    margin: 24px 0;
+    padding: 15px 20px;
+    border-left: 3px solid var(--muted);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.post-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Tables */
+
+.post-content table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 14px;
+}
+
+.post-content th,
+.post-content td {
+    padding: 12px 15px;
+    border: 1px solid var(--line);
+    text-align: left;
+}
+
+.post-content th {
+    background: rgba(20, 32, 36, 0.08);
+    font-weight: bold;
+}
+
+/* Inline Code */
+
+.post-content :not(pre) > code {
+    background: rgba(20, 32, 36, 0.09);
+    padding: 3px 6px;
+    border-radius: 2px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+/* Terminal Code Block */
+
+.post-content pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+    background: var(--terminal);
+    color: #d4e5e6;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.75;
+    tab-size: 4;
+}
+
+.post-content pre code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.post-content .highlighter-rouge {
+    margin: 25px 0;
+}
+
+.post-content .highlight {
+    background: var(--terminal);
+}
+
+.post-terminal {
+    margin: 25px 0;
+    overflow: hidden;
+    border-radius: 3px;
+    background: var(--terminal);
+}
+
+.post-terminal .highlighter-rouge {
+    margin: 0;
+}
+
+.post-terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: var(--terminal-header);
+    color: #d4e5e6;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+}
+
+.post-copy {
+    padding: 3px 7px;
+    background: transparent;
+    border: none;
+    color: #d4e5e6;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.post-copy:hover {
+    opacity: 0.5;
+}
+
+/* Syntax Highlighting */
+
+.highlight .c,
+.highlight .c1,
+.highlight .cm {
+    color: #819b98;
+}
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kr {
+    color: #9cc6bd;
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2 {
+    color: #dfc99e;
+}
+
+.highlight .nf,
+.highlight .nb {
+    color: #b0c9df;
+}
+
+.highlight .mi,
+.highlight .mf {
+    color: #d6a99d;
+}
+
+.highlight .o,
+.highlight .p {
+    color: #d4e5e6;
+}
+
+/* Contents Sidebar */
+
+.post-sidebar {
+    position: sticky;
+    top: 30px;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding-left: 24px;
+    border-left: 1px solid var(--line);
+}
+
+.post-toc h2 {
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--muted);
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+
+#post-toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#post-toc-list a {
+    display: block;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    transition: opacity 0.2s;
+}
+
+#post-toc-list a:hover {
+    opacity: 0.5;
+}
+
+#post-toc-list a.active {
+    font-weight: bold;
+}
+
+#post-toc-list a.toc-h3 {
+    padding-left: 15px;
+    font-size: 12px;
+}
+
+#post-toc-list a.toc-h4 {
+    padding-left: 28px;
+    font-size: 12px;
+}
+
+/* Tags */
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+}
+
+.post-tags-label {
+    margin-right: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.post-tag {
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+}
+
+/* Footer */
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+}
+
+.post-footer a:hover {
+    opacity: 0.5;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+
+    .post-layout {
+        grid-template-columns: minmax(0, 1fr) 200px;
+        gap: 25px;
+    }
+
+    .post-sidebar {
+        padding-left: 18px;
+    }
+
+    .post-meta {
+        gap: 12px 25px;
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .post-header {
+        flex-direction: column;
+        gap: 22px;
+        padding: 22px 5%;
+    }
+
+    .post-brand img {
+        width: 125px;
+    }
+
+    .post-header nav {
+        gap: 18px;
+    }
+
+    .post-header nav a {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+
+    .post-main {
+        width: 90%;
+        padding-top: 28px;
+        padding-bottom: 45px;
+    }
+
+    .post-heading {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .post-eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .post-title-frame {
+        min-height: 190px;
+        padding: 22px 20px 16px;
+    }
+
+    .post-file-number {
+        font-size: 11px;
+    }
+
+    .post-title {
+        font-size: 30px;
+        margin: 22px 0 32px;
+    }
+
+    .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    .post-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .post-sidebar {
+        position: static;
+        max-height: none;
+        order: -1;
+        width: 100%;
+        padding: 16px;
+        border: 1px solid var(--line);
+    }
+
+    .post-content {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .post-content h1,
+    .post-content h2 {
+        font-size: 22px;
+    }
+
+    .post-content h3 {
+        font-size: 18px;
+    }
+
+    .post-content pre {
+        padding: 15px;
+        font-size: 12px;
+    }
+
+    .post-footer {
+        font-size: 10px;
+    }
+
+}
