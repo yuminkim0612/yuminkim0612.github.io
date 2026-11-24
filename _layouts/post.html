@@ -1,0 +1,183 @@
+---
+layout: none
+---
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% assign display_title = page.title | replace: "CTF/Wargame", "CTF/워게임" | replace: "Bug Bounty", "버그바운티" %}
+
+    <title>{{ display_title | escape }} | KYMLD</title>
+
+    <link rel="stylesheet" href="{{ '/assets/css/kymld-post.css' | relative_url }}">
+
+    <script src="{{ '/assets/js/kymld-post.js' | relative_url }}" defer></script>
+</head>
+
+<body id="top" class="post-page">
+
+    <!-- Header -->
+    <header class="post-header">
+
+        <a class="post-brand" href="{{ '/' | relative_url }}">
+            <img src="{{ '/assets/img/kymld-brand.png' | relative_url }}"
+                 alt="KYMLD">
+        </a>
+
+        <nav>
+            <a href="{{ '/' | relative_url }}">HOME</a>
+            <a href="{{ '/categories/' | relative_url }}">CATEGORIES</a>
+            <a href="{{ '/archives/' | relative_url }}">ARCHIVE</a>
+            <a href="{{ '/tags/' | relative_url }}">TAGS</a>
+        </nav>
+
+    </header>
+
+    <main class="post-main">
+
+        <!-- Back to Archive -->
+        <a class="post-back" href="{{ '/archives/' | relative_url }}">
+            ← BACK TO ARCHIVE
+        </a>
+
+        <!-- Record Number -->
+        {% assign record_number = site.posts.size %}
+
+        {% for post in site.posts %}
+            {% if post.url == page.url %}
+                {% break %}
+            {% endif %}
+            {% assign record_number = record_number | minus: 1 %}
+        {% endfor %}
+
+        {% assign record_id = record_number | prepend: '000' | slice: -3, 3 %}
+
+        <!-- Classification -->
+        {% assign category = page.categories | first %}
+
+        {% case category %}
+
+            {% when "개발" %}
+                {% assign classification = "Development" %}
+
+            {% when "CTF/Wargame", "CTF/워게임" %}
+                {% assign classification = "CTF / Wargame" %}
+
+            {% when "Bug Bounty", "버그바운티" %}
+                {% assign classification = "Bug Bounty" %}
+
+            {% when "블로그/기술문서" %}
+                {% assign classification = "Technical Writing" %}
+
+            {% when "논문/컨퍼런스" %}
+                {% assign classification = "Research / Conference" %}
+
+            {% when "공모전/자격증" %}
+                {% assign classification = "Contest / Certification" %}
+
+            {% else %}
+                {% assign classification = category | default: "Unclassified" %}
+
+        {% endcase %}
+
+        <!-- Observation Record -->
+        <section class="post-heading">
+
+            <p class="post-eyebrow">
+                KYMLD / OBSERVATION RECORD
+            </p>
+
+            <div class="post-title-frame">
+
+                <div class="post-file-number">
+                    FILE NO. {{ record_id }}
+                </div>
+
+                <h1 class="post-title">
+                    {{ display_title | escape }}
+                </h1>
+
+                <div class="post-meta">
+
+                    <div class="post-meta-item">
+                        <span>DATE:</span>
+                        <time datetime="{{ page.date | date_to_xmlschema }}">
+                            {{ page.date | date: "%Y.%m.%d" }}
+                        </time>
+                    </div>
+
+                    <div class="post-meta-item">
+                        <span>CLASSIFICATION:</span>
+                        <span>{{ classification | escape }}</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Article and Contents -->
+        <div class="post-layout">
+
+            <article class="post-content" id="post-content">
+
+                {{ content }}
+
+                {% if page.tags and page.tags.size > 0 %}
+
+                <div class="post-tags">
+
+                    <span class="post-tags-label">TAGS</span>
+
+                    {% for tag in page.tags %}
+
+                    <span class="post-tag">
+                        #{{ tag | escape }}
+                    </span>
+
+                    {% endfor %}
+
+                </div>
+
+                {% endif %}
+
+            </article>
+
+            <!-- Table of Contents -->
+            <aside class="post-sidebar">
+
+                <div class="post-toc">
+
+                    <h2>CONTENTS</h2>
+
+                    <nav id="post-toc-list"
+                         aria-label="Table of Contents">
+                    </nav>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="post-footer">
+
+        <span>
+            © {{ site.time | date: "%Y" }} KYMLD
+        </span>
+
+        <a href="#top">
+            BACK TO TOP ↑
+        </a>
+
+    </footer>
+
+</body>
+</html>
