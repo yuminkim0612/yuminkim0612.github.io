@@ -53,11 +53,20 @@ a {
 }
 
 .brand {
-    font-family: Arial, sans-serif;
-    font-size: 25px;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.brand img {
+    display: block;
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    transition: opacity 0.2s;
+}
+
+.brand:hover img {
+    opacity: 0.6;
 }
 
 .navigation {
