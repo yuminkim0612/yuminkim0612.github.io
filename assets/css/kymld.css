@@ -281,14 +281,16 @@ a {
     .planet-panel img {
         height: 180px;
     }
-  .site-header .brand img {
-    display: block;
-    width: 75px !important;
-    height: 75px !important;
-    max-width: 75px;
-    object-fit: contain;
+    .site-header .brand img {
+        display: block;
+        width: 75px !important;
+        height: 75px !important;
+        max-width: 75px;
+        object-fit: contain;
     }
-  /* ========================================
+}
+
+/* ========================================
    HOME - RECENT POSTS & ABOUT ME
 ======================================== */
 
@@ -527,5 +529,4 @@ a {
     .kymld-recent h2 {
         font-size: 36px;
     }
-}
 }
