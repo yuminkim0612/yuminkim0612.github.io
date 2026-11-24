@@ -97,11 +97,11 @@ permalink: /archives/
                 </time>
 
                 <span class="record-title">
-                    {{ post.title | escape }}
+                    {{ post.title | replace: "CTF/Wargame", "CTF/워게임" | replace: "Bug Bounty", "버그바운티" | escape }}
                 </span>
 
                 <span class="record-category">
-                    {{ post.categories | join: " / " | escape }}
+                    {{ post.categories | join: " / " | replace: "CTF/Wargame", "CTF/워게임" | replace: "Bug Bounty", "버그바운티" | escape }}
                 </span>
 
                 <span class="record-arrow">↗</span>
