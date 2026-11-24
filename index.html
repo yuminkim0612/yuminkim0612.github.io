@@ -1,4 +1,94 @@
+
 ---
-layout: home
-# Index page
+layout: null
 ---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Security & Development Archive">
+    <title>KYMLD</title>
+    <link rel="stylesheet" href="{{ '/assets/css/kymld.css' | relative_url }}">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="{{ '/' | relative_url }}">KYMLD</a>
+
+        <nav class="navigation">
+            <a href="{{ '/' | relative_url }}">HOME</a>
+            <a href="{{ '/categories/' | relative_url }}">CATEGORIES</a>
+            <a href="{{ '/archives/' | relative_url }}">ARCHIVE</a>
+            <a href="{{ '/tags/' | relative_url }}">TAGS</a>
+            <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <img class="main-logo"
+                 src="{{ '/assets/img/kymld-logo.png' | relative_url }}"
+                 alt="KYMLD">
+
+            <p class="subtitle">
+                SECURITY &amp; DEVELOPMENT ARCHIVE
+            </p>
+        </section>
+
+        <section class="content-grid">
+
+            <div class="cloud-panel">
+                <img src="{{ '/assets/img/clouds.png' | relative_url }}"
+                     alt="Clouds">
+            </div>
+
+            <div class="recent-posts">
+
+                <div class="section-label">LATEST</div>
+                <h1>Recent Posts</h1>
+
+                {% for post in site.posts limit:5 %}
+                <a class="post-row" href="{{ post.url | relative_url }}">
+                    <span class="post-title">
+                        <span class="arrow">▸</span>
+                        {{ post.title | escape }}
+                    </span>
+
+                    <time>
+                        {{ post.date | date: "%Y.%m.%d" }}
+                    </time>
+                </a>
+                {% endfor %}
+
+            </div>
+
+            <div class="planet-panel">
+
+                <img src="{{ '/assets/img/planet.png' | relative_url }}"
+                     alt="Planet">
+
+                <p>
+                    NOTES ON<br>
+                    SECURITY, DEVELOPMENT,<br>
+                    AND EVERYTHING IN BETWEEN.
+                </p>
+
+                <div class="small-line"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <span>© {{ site.time | date: "%Y" }} KYMLD</span>
+        <a href="https://github.com/yuminkim0612"
+           target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+    </footer>
+
+</body>
+</html>
