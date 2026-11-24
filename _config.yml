@@ -9,8 +9,8 @@ lang: ko-KR
 timezone: Asia/Seoul
 
 # Blog information
-title: HSPACE
-tagline: Cybersecurity & Learning
+title: KYMLD
+tagline: Security & Development Archive
 description: >-
   사이버보안 학습 기록과 프로젝트 경험을 정리하는 개인 블로그입니다.
 
@@ -24,8 +24,8 @@ twitter:
   username:
 
 social:
-  name: HSPACE
-  email:
+  name: KYMLD
+  email: yuminkim@ewha.ac.kr
   fediverse_handle:
   links:
     - https://github.com/yuminkim0612
@@ -109,9 +109,9 @@ assets:
 
 # Progressive Web App
 pwa:
-  enabled: true
+  enabled: false
   cache:
-    enabled: true
+    enabled: false
     deny_paths:
 
 # Pagination
