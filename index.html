@@ -58,7 +58,7 @@ layout: null
                        href="{{ post.url | relative_url }}">
 
                         <span class="kymld-post-title">
-                            ▸ {{ post.title | escape }}
+                            ▸ {{ post.title | replace: "CTF/Wargame", "CTF/워게임" | replace: "Bug Bounty", "버그바운티" | escape }}
                         </span>
 
                         <time>
