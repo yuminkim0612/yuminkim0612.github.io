@@ -1,0 +1,264 @@
+
+:root {
+    --background: #b8cdd1;
+    --ink: #142024;
+    --muted: #35474d;
+    --line: rgba(20, 32, 36, 0.65);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0 3.5%;
+    background-color: var(--background);
+    background-image: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.12),
+        transparent 75%
+    );
+    color: var(--ink);
+    font-family: "Courier New", monospace;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.09;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Header */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 76px;
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 4px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.navigation a {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: opacity 0.2s;
+}
+
+.navigation a:hover {
+    opacity: 0.5;
+}
+
+/* Main logo */
+
+.hero {
+    min-height: 490px;
+    padding: 65px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-logo {
+    display: block;
+    width: 650px;
+    max-width: 85%;
+    height: auto;
+    mix-blend-mode: multiply;
+}
+
+.subtitle {
+    margin: 8px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+/* Bottom section */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    gap: 38px;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+}
+
+.cloud-panel {
+    border: 1px solid var(--line);
+    padding: 6px;
+    align-self: start;
+}
+
+.cloud-panel img {
+    display: block;
+    width: 100%;
+    height: 255px;
+    object-fit: cover;
+}
+
+.section-label {
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+.recent-posts h1 {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 40px;
+    margin: 10px 0 18px;
+}
+
+.post-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--line);
+    transition: background-color 0.2s;
+}
+
+.post-row:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.post-title {
+    font-size: 16px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.arrow {
+    margin-right: 6px;
+}
+
+.post-row time {
+    font-size: 13px;
+    white-space: nowrap;
+    color: var(--muted);
+}
+
+.planet-panel {
+    border-left: 1px solid var(--line);
+    padding-left: 35px;
+}
+
+.planet-panel img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+}
+
+.planet-panel p {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.7;
+    letter-spacing: 2px;
+    margin: 20px 0;
+}
+
+.small-line {
+    width: 45px;
+    height: 1px;
+    background: var(--ink);
+}
+
+/* Footer */
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+    .site-header {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .navigation a {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 380px;
+    }
+
+    .main-logo {
+        max-width: 100%;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .planet-panel {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .cloud-panel img {
+        height: 220px;
+    }
+
+    .planet-panel img {
+        height: 180px;
+    }
+}
