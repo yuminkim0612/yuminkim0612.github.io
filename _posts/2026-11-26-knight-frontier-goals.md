@@ -1,3 +1,9 @@
+---
+title: "My Core Values & Knight Frontier Goals"
+date: 2026-11-26 14:50:00 +0900
+categories: ["블로그/기술문서"]
+tags: [Knight Frontier, Self-Reflection]
+---
 ## 1. 현재 내가 중요하게 생각하는 가치
 
 ### 1.1. 관심가지기
